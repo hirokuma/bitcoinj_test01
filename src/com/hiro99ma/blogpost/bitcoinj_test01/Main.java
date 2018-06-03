@@ -25,6 +25,11 @@ class BitcoinjTest {
         wak.startAsync();
     }
 
+    void stop() {
+        wak.stopAsync();
+        wak.awaitTerminated();
+    }
+
     void exec() {
         wak.awaitRunning();
         Address addr = wak.wallet().currentReceiveAddress();
@@ -36,5 +41,6 @@ public class Main {
     public static void main(String[] args) {
         BitcoinjTest bjt = new BitcoinjTest();
         bjt.exec();
+        bjt.stop();
     }
 }
